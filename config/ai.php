@@ -127,7 +127,7 @@ return [
             'url' => env('OLLAMA_URL', 'http://localhost:11434'),
             'models' => [
                 'text' => [
-                    'default' => 'qwen3.5:9b',
+                    'default' => env('OLLAMA_TEXT_MODEL', 'qwen3.5:4b'),
                 ],
                 'embeddings' => [
                     'default' => 'nomic-embed-text',

@@ -17,6 +17,9 @@ class DocumentAskController extends Controller
             'question' => ['required', 'string', 'min:3', 'max:4000'],
         ]);
 
+        // Local models can take longer than PHP's default 30 second request limit.
+        set_time_limit(300);
+
         $question = $validated['question'];
         $documents = Document::query()
             ->whereVectorSimilarTo('embedding', $question, minSimilarity: 0.35)
@@ -43,6 +46,7 @@ class DocumentAskController extends Controller
             $question,
             provider: Lab::Ollama,
             model: config('ai.providers.ollama.models.text.default'),
+            timeout: 300,
         )->text;
 
         return response()->json([
