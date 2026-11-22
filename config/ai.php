@@ -130,7 +130,7 @@ return [
                     'default' => 'qwen3.5:9b',
                 ],
                 'embeddings' => [
-                    'default' => 'nomic-emded-text',
+                    'default' => 'nomic-embed-text',
                     'dimensions' => 768,
                 ],
             ],
